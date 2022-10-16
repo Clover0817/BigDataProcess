@@ -25,7 +25,6 @@ totalList.sort(reverse=True)
 for i in range(count):
       	gradeDic[totalList[i]] = i + 1
 
-gradeList = list(gradeDic.values())
 for i in totalList:
         if gradeDic[i] <= math.trunc(count * 0.3):
                	if gradeDic[i] <= math.trunc(count * 0.3 * 0.5):
@@ -33,12 +32,12 @@ for i in totalList:
                 else:
                         gradeDic[i] = 'A0'
         elif gradeDic[i] <= math.trunc(count * 0.7):
-                if gradeDic[i] <= math.trunc(math.trunc(count * 0.7 + count * 0.3) * 0.5):
+                if gradeDic[i] <= math.trunc((math.truc(count * 0.7) + math.trunc(count * 0.3)) * 0.5):
                         gradeDic[i] = 'B+'
                 else:
                         gradeDic[i] = 'B0'
         else:
-                if gradeDic[i] <= math.trunc(math.trunc(count * 1.0 + count * 0.7) * 0.5):
+                if gradeDic[i] <= math.trunc((math.trunc(count * 1.0) + math.trunc(count * 0.7)) * 0.5):
                         gradeDic[i] = 'C+'
                 else:
                         gradeDic[i] = 'C0'
