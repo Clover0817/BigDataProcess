@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import openpyxl
 import math
 
@@ -19,29 +20,28 @@ for row in ws:
                 count += 1
         row_id += 1
 
-if count > 0:
-	gradeDic = {}
-	totalList.sort(reverse=True)
-	for i in range(count):
-       		gradeDic[totalList[i]] = i + 1
+gradeDic = {}
+totalList.sort(reverse=True)
+for i in range(count):
+      	gradeDic[totalList[i]] = i + 1
 
-	gradeList = list(gradeDic.values())
-	for i in totalList:
-        	if gradeDic[i] <= math.trunc(count * 0.3):
-               		if gradeDic[i] <= math.trunc(count * 0.3 * 0.5):
-                        	gradeDic[i] = 'A+'
-                	else:
-                        	gradeDic[i] = 'A0'
-        	elif gradeDic[i] <= math.trunc(count * 0.7):
-                	if gradeDic[i] <= math.trunc((count * 0.7 + count * 0.3) * 0.5):
-                        	gradeDic[i] = 'B+'
-                	else:
-                        	gradeDic[i] = 'B0'
-        	else:
-                	if gradeDic[i] <= math.trunc((count * 1.0 + count * 0.7) * 0.5):
-                        	gradeDic[i] = 'C+'
-                	else:
-                        	gradeDic[i] = 'C0'
+gradeList = list(gradeDic.values())
+for i in totalList:
+        if gradeDic[i] <= math.trunc(count * 0.3):
+               	if gradeDic[i] <= math.trunc(count * 0.3 * 0.5):
+                        gradeDic[i] = 'A+'
+                else:
+                        gradeDic[i] = 'A0'
+        elif gradeDic[i] <= math.trunc(count * 0.7):
+                if gradeDic[i] <= math.trunc(math.trunc(count * 0.7 + count * 0.3) * 0.5):
+                        gradeDic[i] = 'B+'
+                else:
+                        gradeDic[i] = 'B0'
+        else:
+                if gradeDic[i] <= math.trunc(math.trunc(count * 1.0 + count * 0.7) * 0.5):
+                        gradeDic[i] = 'C+'
+                else:
+                        gradeDic[i] = 'C0'
 
 row_id = 1
 for row in ws:
