@@ -32,7 +32,7 @@ for i in totalList:
                 else:
                         gradeDic[i] = 'A0'
         elif gradeDic[i] <= math.trunc(count * 0.7):
-                if gradeDic[i] <= math.trunc((math.truc(count * 0.7) + math.trunc(count * 0.3)) * 0.5):
+                if gradeDic[i] <= math.trunc((math.trunc(count * 0.7) + math.trunc(count * 0.3)) * 0.5):
                         gradeDic[i] = 'B+'
                 else:
                         gradeDic[i] = 'B0'
