@@ -19,7 +19,7 @@ with open(sys.argv[1], "rt") as fp:
 
 		uberList.append([region, day, vehicles, trips])
 	
-	uberList = sorted(uberList, key = lambda uber: uber[0])
+	uberList = sorted(uberList, key = lambda uber: (uber[0], uber[1]))
 	f = open(sys.argv[2], "wt")
 	for item in uberList:
 		f.write("%s,%s %d,%d\n" %(item[0], dayOfWeek[item[1]], item[2], item[3]))
