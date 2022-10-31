@@ -8,10 +8,17 @@ with open(sys.argv[1], "rt") as fp:
 		if not line: break
 
 		info = line.split(',', 2)
+		region = info[0]
+
 		date = info[1].split("/")
-		day = calendar.weekday(int(date[2]), int(date[0]), int(date[1]))
-		num = info[2].strip()
-		uberList.append("%s,%s %s\n" %(info[0], dayOfWeek[day], num))
+		d = calendar.weekday(int(date[2]), int(date[0]), int(date[1]))
+		day = dayOfWeek[d]
+
+		num = info[2].split(",")
+		vehicles = int(num[0])
+		trips = int(num[1])
+
+		uberList.append("%s,%s %d,%d\n" %(region, day, vehicles, trips))
 
 	f = open(sys.argv[2], "wt")
 	for item in uberList:
