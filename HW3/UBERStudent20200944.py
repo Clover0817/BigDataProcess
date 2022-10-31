@@ -16,10 +16,17 @@ with open(sys.argv[1], "rt") as fp:
 		num = info[2].split(",")
 		vehicles = int(num[0])
 		trips = int(num[1])
-
-		uberList.append([region, day, vehicles, trips])
+		
+		flag = 0
+		for uber in uberList:
+			if uber[0] == region and uber[1] == day:
+				uber[2] += vehicles
+				uber[3] += trips
+				flag = 1
+				break
+		if flag == 0:
+			uberList.append([region, day, vehicles, trips])
 	
-	uberList = sorted(uberList, key = lambda uber: uber[1])
 	f = open(sys.argv[2], "wt")
 	for item in uberList:
 		f.write("%s,%s %d,%d\n" %(item[0], dayOfWeek[item[1]], item[2], item[3]))
